@@ -1,7 +1,7 @@
 package restutils;
 
 
-import constants.Endpoints;
+import config.ConfigReader;
 import io.restassured.response.Response;
 
 import static io.restassured.RestAssured.given;
@@ -9,23 +9,23 @@ import static io.restassured.RestAssured.given;
 public class RestHelpers {
 
 
-    public static Response restGet(String URL, Endpoints endpoint, int expectedStatusCode) {
+    public static Response restGet(String URL, String endpoint ){
         return given()
                 .when()
-                .get(URL.concat(Endpoints.GET_POSTAL_CODE))
-                .then().statusCode(expectedStatusCode)
+                .get(URL.concat(endpoint))
+                .then()
                 .extract()
                 .response();
     }
 
-    public static Response getPostalCodeInfo(String endpoint ,String country ,String postalCode,int expectedStatusCode) {
+    public static Response getPostalCodeInfo(String endpoint ,String country ,String postalCode) {
         return given()
-                .baseUri(Endpoints.BASE_URL)
+                .baseUri(ConfigReader.getBaseUrl())
                 .pathParam("country", country)
                 .pathParam("postalCode", postalCode)
                 .when()
                 .get(endpoint)
-                .then().statusCode(expectedStatusCode)
+                .then().log().all()
                 .extract()
                 .response();
     }

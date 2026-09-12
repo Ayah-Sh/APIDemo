@@ -1,0 +1,8 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="APIDemo Suite">
+    <test name="Zippopotam API Tests">
+        <classes>
+            <class name="zippopotam.ZipCodeTest"/>
+        </classes>
+    </test>
+</suite>
