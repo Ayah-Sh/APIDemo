@@ -9,10 +9,10 @@ import restutils.RestHelpers;
 public class ZipCodeLocationService {
 
 
-    public static Response getZipCodeLocation(String country, String postalCode, int expectedStatusCode) {
+    public static Response getZipCodeLocation(String country, String postalCode) {
 
 
-        return RestHelpers.getPostalCodeInfo(Endpoints.GET_POSTAL_CODE,country,postalCode, expectedStatusCode);
+        return RestHelpers.getPostalCodeInfo(Endpoints.GET_POSTAL_CODE,country,postalCode);
     }
 
 }
